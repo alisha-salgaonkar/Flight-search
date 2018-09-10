@@ -1,0 +1,132 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 dark-color side-bar">
+            <div class="mx-auto mt-5" style="width:800px;">
+                <h4 class="text-color"><center>Add flight </center></h4>
+                <form id="addFlight" class="form-horizontal" action="/saveFlightDetails" method="post">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="airlineName">Airline:</label>
+                            <input type="text" class="form-control" name="airlineName">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="airlineName">Airline Code:</label>
+                            <input type="text" class="form-control" name="airlineCode">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="flightNumber">Flight number:</label>
+                            <input type="text" class="form-control" name="flightNumber">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="flightType">Flight type:</label>
+                            <select class="form-control" id="flightType" name="flightType">
+                                <option value="1oneWay">One way</option>
+                                <option value="return">Return</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="flightNumber">Origin:</label>
+                            <input type="text" name="origin" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="flightType">Destination:</label>
+                            <input type="text" name="destination" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="availableSeats">Available seats:</label>
+                            <input type="text" name="availableSeats" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="price">Price:</label>
+                            <input type="text" name="price" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="originDepartureDate">Origin depature date:</label>
+                            {{!-- <input type="date" name="originDepartureDate" class="form-control"> --}}
+                            <input type="text" class="form-control" name="originDepartureDate" id="originDepartureDate">
+                            
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="destinationArrivalDate">Destination arrival date:</label>
+                            {{!-- <input type="date" name="destinationArrivalDate" class="form-control"> --}}
+                            <input type="text" class="form-control" name="destinationArrivalDate" id="destinationArrivalDate">
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-row d-none" id="returnDetails">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="destinationDepartureDate">Destination depature date:</label>
+                            {{!-- <input type="date" name="destinationDepartureDate" class="form-control"> --}}
+                            <input type="text" class="form-control" name="destinationDepartureDate" id="destinationDepartureDate">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-sm-12 text-color" for="originArrivalDate">Origin arrival date:</label>
+                            {{!-- <input type="date" name="originArrivalDate" class="form-control"> --}}
+                            <input type="text" class="form-control" name="originArrivalDate" id="originArrivalDate">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-sm-12 text-color" for="duration">Duration:</label>
+                            <input type="text" name="duration" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-sm-12 text-color" for="operationalDays">OperationalDays:</label>
+                            <select class="form-control" name="operationalDays" multiple>
+                                <option value="0">Sunday</option>
+                                <option value="1">Monday</option>
+                                <option value="2">Tuesday</option>
+                                <option value="3">Wednesday</option>
+                                <option value="4">Thursday</option>
+                                <option value="5">Friday</option>
+                                <option value="6">Saturday</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn button-color">Save</button>
+                        </div>
+                    </div>
+                </form>
+                {{#if success}}
+                <div id="addSuccessMsg" class="mt-3 alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Successfully added flight details!</strong>
+                </div>
+                {{/if}} 
+                
+                {{#if error}}
+                <div id="addSuccessMsg" class="mt-3 alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{error}}</strong>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+
+    </div>
+</div>

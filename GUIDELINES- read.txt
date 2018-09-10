@@ -1,0 +1,16 @@
+********************************************************************************************
+GUIDELINES
+********************************************************************************************
+URL - http://localhost:8000
+Homepage is displayed.
+
+URL - http://localhost:8000/addFlightDetails
+Renders add form
+Add form is use to populate data
+
+Fields are compulsory except : destination Departure Date
+                             : origin arrival date
+
+URL - http://localhost:8000/saveFlightDetails
+Is called to save info 
+

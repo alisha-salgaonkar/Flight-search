@@ -1,0 +1,40 @@
+body {
+  font: 14px "Arial", Helvetica, sans-serif;
+}
+
+.dark-color {
+  background-color: #4d3833;
+}
+.nav-link.active {
+  background-color:#383838!important;
+  color:#fff;
+}
+.button-color{
+  background-color: #ff370e;
+  color:#fff;
+}
+.side-bar {
+  min-height: calc(100vh - 56px);
+}
+.tab-default { 
+  color: #fff !important;
+  border: 1px solid #5b473f !important;
+}
+.text-color{
+  color: #fff !important;
+}
+
+.jumbotron {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.disp-labels {
+  width: 46px;
+}
+p {
+  margin-bottom: 0.1rem !important;
+}
+.nav-tabs {
+  border:none!important;
+} 

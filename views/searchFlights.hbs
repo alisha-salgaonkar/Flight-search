@@ -1,0 +1,143 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-4 dark-color side-bar">
+            <div class="mx-auto mt-5" style="width:300px;">
+                <ul class="nav nav-tabs mb-2 nav-fill" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active dark-color tab-default mr-3" href="#oneway" role="tab" data-toggle="tab">One way</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tab-default" href="#returnway" role="tab" data-toggle="tab">Return</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active show" id="oneway">
+                        <form id="searchOneWayFrm" action="/searchListFlightDetails" method="post">
+                            <div class="form-group input-group-sm">
+                                <input type="text" class="form-control" name="origin" placeholder="Enter origin">
+                            </div>
+                            <div class="form-group input-group-sm">
+                                <input type="text" class="form-control" name="destination" placeholder="Enter destination">
+                            </div>
+                            <div class="form-group input-group-sm">
+                                <input type="date" class="form-control" name="departureDate" placeholder="Departure date">                                
+                            </div>
+
+                            <div id="searchReturnDate" class="form-group input-group-sm d-none">
+                                <input type="date" class="form-control" name="returnDate" placeholder="Return date">
+                            </div>
+                            <div class="form-group input-group-sm">
+                                <select class="form-control" name="passengers" placeholder="passenger">
+                                    <option value="">Select passengers</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                </select>
+                            </div>
+                            <div class="form-group input-group-sm text-center">
+                                <button type="submit" class="btn button-color btn-sm mx-auto px-5">SEARCH</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="returnway">
+
+                        <form action="/searchListFlightDetails" method="post">
+                            <div class="form-group input-group-sm">
+                                <input type="text" class="form-control" name="origin" placeholder="Enter origin">
+                            </div>
+                            <div class="form-group input-group-sm">
+                                <input type="text" class="form-control" name="destination" placeholder="Enter destination">
+                            </div>
+                            <div class="form-group input-group-sm">
+                                <input type="date" class="form-control" name="departureDate" placeholder="Departure date">
+                            </div>
+
+                            <div class="form-group input-group-sm ">
+                                <input type="date" class="form-control" name="returnDate" placeholder="Return date">
+                            </div>
+                            <div class="form-group input-group-sm ">
+                                <input type="number" class="form-control" name="price" placeholder="Price">
+                            </div>
+                            <div class="form-group input-group-sm">
+                                <select class="form-control" name="passengers" placeholder="passenger">
+                                    <option value="">Select passengers</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                </select>
+                            </div>
+                            <div class="form-group input-group-sm text-center">
+                                <button type="submit" class="btn button-color btn-sm mx-auto px-5">SEARCH</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8">
+            
+        {{#if flightsData.length}}
+            <div class="header-section mt-5">
+                <div class="d-flex mb-1">
+                    <div class="p-2 flex-grow-1" style="font-size: 2rem;">
+                        <strong> {{ flightsData.0.origin }} > {{ flightsData.0.destination }}</strong>
+                    </div>
+                    <div class="p-2">
+                        <div><small><p class="disp-labels d-inline-block"> Depart</p>: <span>{{ flightsData.0.originDepartureDate }}</span></small></div>
+                        <div><small><p class="disp-labels d-inline-block"> Return</p>: <span>{{ flightsData.0.destDepartureDate }}</span></small></div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="data-section clear-both">
+                {{# each flightsData }}
+                <div class="jumbotron">
+                    <div class="d-flex">
+                        <div class="p-2 flex-fill">
+                            <h2>Rs {{this.price}}</h2>
+                            <p><small> {{ this.airlineCode}}-{{this.flightNumber}}</small></p>
+                            <p class="my-2"><strong> {{ this.origin}} >  {{ this.destination}}</strong></p>
+                            <div><p class="disp-labels d-inline-block">Depart</p>
+                                :<span> {{ this.originDepartureTime}}</span></div>
+                            <div><p class="disp-labels d-inline-block">Arrive</p>
+                                :<span> {{ this.originArrivalTime}}</span></div>
+                        </div>
+
+                        <div class="d-flex align-items-end">
+                            <div class="p-2 flex-fill">
+                                <p><small> {{ this.airlineCode}}</small></p>
+                                <p class="my-2"><strong> {{ this.destination}} >  {{ this.origin}}</strong></p>
+                                <div><p class="disp-labels  d-inline-block">Depart</p>: <span> {{ this.destDepartureTime}}</span></div>
+                                <div><p class="disp-labels  d-inline-block">Arrive</p>: <span> {{ this.destArrivalTime}}</span></div>
+                            </div>
+                        </div>
+                        <div class="p-2 d-flex flex-fill align-items-center">
+                            <button type="submit" class="btn button-color btn-sm mx-auto">BOOK THIS FLIGHT</button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+                <div id="noRecordsMsg" class="mt-3 alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>No records found</strong>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
